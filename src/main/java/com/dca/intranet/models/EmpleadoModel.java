@@ -1,9 +1,13 @@
 package com.dca.intranet.models;
 
+
 import java.sql.Blob;
 import java.sql.Date;
 
 import javax.persistence.*;
+
+// import javax.validation.constraints.NotNull;
+// import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="empleado")
@@ -14,9 +18,14 @@ public class EmpleadoModel {
     @Column(unique = true, nullable = false)
     private Long idEmpleado;
     
+    // @NotNull
+    // @Size(max=150)
     private String nombre;
     private String apellido;
+    // @Temporal(TemporalType.DATE)
     private Date fechaNacimiento;
+    //private java.util.Date fechaNacimiento;
+
     private String genero;
     private String pais;
     private String calle;
@@ -28,10 +37,19 @@ public class EmpleadoModel {
     private String puesto;
     private String login;
     private String password;
-    private Blob photo;
+    private Blob foto;
     private Blob dni;
+    // private byte[] foto2;
+
+
+    
     private Date fechaEntrada;
     private Date fechaSalida;
+    // @Temporal(TemporalType.DATE)
+    // private java.util.Date fechaEntrada;
+    // @Temporal(TemporalType.DATE)
+    // private java.util.Date fechaSalida;
+
     private Byte isActif;
     private Byte isDelete;
 
@@ -155,12 +173,12 @@ public class EmpleadoModel {
         this.password = password;
     }
 
-    public Blob getPhoto() {
-        return this.photo;
+    public Blob getFoto() {
+        return this.foto;
     }
 
-    public void setPhoto(Blob photo) {
-        this.photo = photo;
+    public void setFoto(Blob foto) {
+        this.foto = foto;
     }
 
     public Blob getDni() {
@@ -202,6 +220,5 @@ public class EmpleadoModel {
     public void setIsDelete(Byte isDelete) {
         this.isDelete = isDelete;
     }
-
     
 }
