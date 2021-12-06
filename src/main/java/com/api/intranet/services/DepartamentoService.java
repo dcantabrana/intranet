@@ -18,5 +18,9 @@ public class DepartamentoService {
     public List<Departamento> getDepartamentos(){
         return departamentoRepository.findAll();
     }
+
+    public Departamento addDepartamento(Departamento departamento){
+        return departamentoRepository.save(departamento);
+    }
     
 }

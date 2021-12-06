@@ -27,7 +27,9 @@ public class Departamento {
     @JsonIgnore
     private Set<Empleado> empleados = new HashSet<>();
 
-
+    @ManyToMany(mappedBy="depart_visible")
+    @JsonIgnore
+    private Set<TablonAnuncio> tablonAnuncios = new HashSet<>();
 
 
     public int getIdDepartamento() {
@@ -74,6 +76,14 @@ public class Departamento {
         this.email = email;
     }
     
+
+    public Set<TablonAnuncio> getTablonAnuncios() {
+        return this.tablonAnuncios;
+    }
+
+    public void setTablonAnuncios(Set<TablonAnuncio> tablonAnuncios) {
+        this.tablonAnuncios = tablonAnuncios;
+    }
     
 
 }
