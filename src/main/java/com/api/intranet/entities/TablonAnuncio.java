@@ -19,9 +19,14 @@ public class TablonAnuncio {
     private String msg;
     private Date fecha;
 
-    // private int idEmpleado;
+    // Relacion de mucho a uno para empleados
+    @ManyToOne
+    @JoinColumn(name="id_empleado")
+    private Empleado autor;
+
     private byte isDelete;
 
+    // Relacion de muchos a muchos para departamentos
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name="dep_tab",
     joinColumns = @JoinColumn(name="id_anuncio"),
@@ -53,14 +58,6 @@ public class TablonAnuncio {
         this.msg = msg;
     }
 
-    // public int getIdEmpleado() {
-    //     return this.idEmpleado;
-    // }
-
-    // public void setIdEmpleado(int idEmpleado) {
-    //     this.idEmpleado = idEmpleado;
-    // }
-
     public byte getIsDelete() {
         return this.isDelete;
     }
@@ -83,6 +80,15 @@ public class TablonAnuncio {
 
     public void setDepart_visible(Set<Departamento> depart_visible) {
         this.depart_visible = depart_visible;
+    }
+
+
+    public Empleado getAutor() {
+        return this.autor;
+    }
+
+    public void setAutor(Empleado autor) {
+        this.autor = autor;
     }
 
 

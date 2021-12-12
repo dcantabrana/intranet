@@ -7,6 +7,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "empleados")
@@ -56,7 +58,10 @@ public class Empleado {
     inverseJoinColumns = @JoinColumn(name="id_departamento"))
     private Set<Departamento> departamento = new HashSet<>();
 
-
+    @JsonIgnore
+    @OneToMany
+    @JoinColumn(name = "id_empleado")
+    private Set<TablonAnuncio> anuncios;
 
 
     public Long getId() {
@@ -234,6 +239,20 @@ public class Empleado {
     public void setDepartamento(Set<Departamento> departamento) {
         this.departamento = departamento;
     }
+
+
+
+    public Set<TablonAnuncio> getAnuncios() {
+        return this.anuncios;
+    }
+
+    public void setAnuncios(Set<TablonAnuncio> anuncios) {
+        this.anuncios = anuncios;
+    }
+
+    // public void addAnuncioAutor(TablonAnuncio anuncio){
+    //     this.anuncios.add(anuncio);
+    // }
 
     
 }

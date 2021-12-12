@@ -10,6 +10,7 @@ import com.api.intranet.entities.Directorio;
 import com.api.intranet.entities.Empleado;
 import com.api.intranet.entities.TablonAnuncio;
 import com.api.intranet.pojos.EmpleadoRequest;
+import com.api.intranet.pojos.TablonAnuncioRequest;
 import com.api.intranet.services.DepartamentoService;
 import com.api.intranet.services.DiaFestivoService;
 import com.api.intranet.services.DirectorioService;
@@ -30,6 +31,7 @@ public class HomeController {
     @Autowired TablonAnuncioService tablonAnuncioService;
 
 
+    
     // --------------------------------- EMPLEADOS --------------------------------
     // Devuelve todos los empleados
     @GetMapping("empleados")
@@ -72,6 +74,7 @@ public class HomeController {
     // ----------------------------------------------------------------------------
 
 
+
     // ------------------------------- DEPARTAMENTOS ------------------------------
     @GetMapping("departamentos")
     public List<Departamento> getDepartamentos(){
@@ -96,6 +99,7 @@ public class HomeController {
     }
     // ----------------------------------------------------------------------------
 
+
     
     // -------------------------- DIRECTORIO TELEFONICO ----------------------------
     @GetMapping("directorio")
@@ -108,12 +112,18 @@ public class HomeController {
     }
     // ----------------------------------------------------------------------------
 
+
+
     // --------------------------------- ANUNCIOS --------------------------------
-    // Devuelve todos los empleados
+    // Devuelve todos los anuncios
     @GetMapping("anuncios")
     public List<TablonAnuncio> getAnuncios(){
         return tablonAnuncioService.getAnuncios();
-        
+    }
+    // Anade anuncios
+    @PostMapping("anuncios")
+    public TablonAnuncio addAnuncio(@RequestBody TablonAnuncioRequest anuncioRequest){
+        return tablonAnuncioService.addUnAnuncio(anuncioRequest);
     }
     // ----------------------------------------------------------------------------
 }

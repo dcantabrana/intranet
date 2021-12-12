@@ -85,5 +85,8 @@ public class Departamento {
         this.tablonAnuncios = tablonAnuncios;
     }
     
+    public void addAnuncioDep(TablonAnuncio anuncio){
+        this.tablonAnuncios.add(anuncio);
+    }
 
 }
